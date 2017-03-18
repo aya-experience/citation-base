@@ -1,0 +1,12 @@
+sudo: required
+language: ruby
+
+services:
+- docker
+
+script:
+- docker build -t ayaxp/citation-base .
+
+after_success:
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+- docker push ayaxp/citation-base
